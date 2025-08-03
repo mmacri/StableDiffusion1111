@@ -21,6 +21,9 @@ scripts/
 2. Run the setup script to create the folder structure. Add `--deforum` to also clone the Deforum extension:
    ```bash
    bash scripts/setup.sh [--deforum]
+2a. Optional: clone video/animation extensions (e.g. Deforum) into the `extensions/` directory:
+   ```bash
+   git clone https://github.com/deforum-art/deforum-for-automatic1111-webui extensions/deforum
    ```
 3. Place your model files in the appropriate `models/` subdirectories.
 4. Launch the Web UI:
