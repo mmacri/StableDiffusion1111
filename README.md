@@ -18,7 +18,10 @@ scripts/
 
 ## Getting Started
 1. Install Docker, Docker Compose, the NVIDIA driver, and `nvidia-docker2` on your host.
-2. Optional: clone video/animation extensions (e.g. Deforum) into the `extensions/` directory:
+2. Run the setup script to create the folder structure. Add `--deforum` to also clone the Deforum extension:
+   ```bash
+   bash scripts/setup.sh [--deforum]
+2a. Optional: clone video/animation extensions (e.g. Deforum) into the `extensions/` directory:
    ```bash
    git clone https://github.com/deforum-art/deforum-for-automatic1111-webui extensions/deforum
    ```
@@ -30,6 +33,6 @@ scripts/
 5. Open <http://localhost:7860> in your browser.
 
 ## Notes
-- The `CLI_ARGS` in `docker-compose.yml` enable advanced features: `--allow-code`, `--xformers`, `--enable-insecure-extension-access`, `--listen`, `--enable-console-prompts`, and `--api`.
+- The `CLI_ARGS` in `docker-compose.yml` enable advanced features: `--allow-code`, `--xformers`, `--enable-insecure-extension-access`, `--listen`, `--enable-console-prompts`, and `--api`. Note the security implications of flags like `--listen` and `--enable-insecure-extension-access`, especially if running on a machine exposed to an untrusted network.
 - `configs/` and `scripts/` are mounted into the container so you can tweak UI configs and custom scripts without rebuilding.
 - Output images (and videos from extensions) are saved under `outputs/`.

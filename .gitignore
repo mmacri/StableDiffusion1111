@@ -27,3 +27,5 @@ configs/*
 
 scripts/*
 !scripts/.gitkeep
+!scripts/setup.sh
+
