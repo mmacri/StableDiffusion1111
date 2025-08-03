@@ -30,6 +30,6 @@ scripts/
 5. Open <http://localhost:7860> in your browser.
 
 ## Notes
-- The `CLI_ARGS` in `docker-compose.yml` enable advanced features: `--allow-code`, `--xformers`, `--enable-insecure-extension-access`, `--listen`, `--enable-console-prompts`, and `--api`.
+- The `CLI_ARGS` in `docker-compose.yml` enable advanced features: `--allow-code`, `--xformers`, `--enable-insecure-extension-access`, `--listen`, `--enable-console-prompts`, and `--api`. Note the security implications of flags like `--listen` and `--enable-insecure-extension-access`, especially if running on a machine exposed to an untrusted network.
 - `configs/` and `scripts/` are mounted into the container so you can tweak UI configs and custom scripts without rebuilding.
 - Output images (and videos from extensions) are saved under `outputs/`.
