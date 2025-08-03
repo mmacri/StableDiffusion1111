@@ -1,1 +1,35 @@
-# StableDiffusion1111
+# Stable Diffusion WebUI Docker Setup
+
+This repository contains a Docker configuration to run [Automatic1111's Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) locally with GPU acceleration.
+
+## Folder Structure
+```
+outputs/
+models/
+  Stable-diffusion/
+  Lora/
+  VAE/
+  embeddings/
+  ControlNet/
+extensions/
+configs/
+scripts/
+```
+
+## Getting Started
+1. Install Docker, Docker Compose, the NVIDIA driver, and `nvidia-docker2` on your host.
+2. Optional: clone video/animation extensions (e.g. Deforum) into the `extensions/` directory:
+   ```bash
+   git clone https://github.com/deforum-art/deforum-for-automatic1111-webui extensions/deforum
+   ```
+3. Place your model files in the appropriate `models/` subdirectories.
+4. Launch the Web UI:
+   ```bash
+   docker compose up -d
+   ```
+5. Open <http://localhost:7860> in your browser.
+
+## Notes
+- The `CLI_ARGS` in `docker-compose.yml` enable advanced features: `--allow-code`, `--xformers`, `--enable-insecure-extension-access`, `--listen`, `--enable-console-prompts`, and `--api`.
+- `configs/` and `scripts/` are mounted into the container so you can tweak UI configs and custom scripts without rebuilding.
+- Output images (and videos from extensions) are saved under `outputs/`.

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  stable-diffusion:
+    image: ghcr.io/automatic1111/stable-diffusion-webui:latest
+    container_name: stable-diffusion-webui
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./models/Stable-diffusion:/app/models/Stable-diffusion
+      - ./models/Lora:/app/models/Lora
+      - ./models/VAE:/app/models/VAE
+      - ./models/embeddings:/app/embeddings
+      - ./models/ControlNet:/app/models/ControlNet
+      - ./extensions:/app/extensions
+      - ./configs:/app/config
+      - ./scripts:/app/scripts
+    environment:
+      - CLI_ARGS=--allow-code --xformers --enable-insecure-extension-access --listen --enable-console-prompts --api
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    restart: unless-stopped
